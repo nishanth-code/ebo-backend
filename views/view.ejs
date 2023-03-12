@@ -1,0 +1,20 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <% for( let blog of blogs ){ %>
+        <div>
+            <h1><%=blog.blogTitle %></h1>
+            <p><%= blog.blog%></p>
+            <p>posted by:<%=blog.blogPostedBy %></p>
+            <p>header img src:<%= blog.headreImg%> </p>
+            <% for( let blog of blogs ){ %>
+            <p></p>
+        </div>
+    
+</body>
+</html>

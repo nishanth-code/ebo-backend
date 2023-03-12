@@ -13,6 +13,7 @@ const PORT =4000 ;
 
 connectDB();
 
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.set('view engine','ejs')
@@ -34,8 +35,9 @@ app.post('/blog',async(req,res)=>{
 })
 app.get('/blogView',async(req,res)=>{
     const blogs =await blog.find()
-    console.log(blogs)
-    res.json(blogs)
+    res.render('view',{blogs})
+    // console.log(blogs)
+    // res.json(blogs)
 })
 app.put('/blogview/:id',async(req,res)=>{
     

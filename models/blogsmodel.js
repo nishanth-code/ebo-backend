@@ -10,12 +10,12 @@ var blog_schema = new mongoose.Schema({
         type:String
     },
     
-    header_img:{
+    headerImg:{
         type:String
     },
-    content_img:{
+    contentImg:[{
         type:String
-    }
+    }]
 });
 const blogModel = mongoose.model('ebo_blog',blog_schema)
 module.exports = blogModel;
