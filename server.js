@@ -44,6 +44,7 @@ app.put('/blogview/:id',async(req,res)=>{
     console.log(bloge)
     
 })
+
 app.delete('/blogview/:id'), async(req,res) =>{
     console.log('delete route')
     await blog.findByIdAndDelete(req.params.id)

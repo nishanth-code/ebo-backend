@@ -15,11 +15,11 @@
             <% for( let url of blog.contentImg ){ %>
             <p><%=  url %></p>
             <% } %>
-            <form action="/blogview/<%= blog.id %>?_method=put" method="post">
+            <!-- <form action="/blogview/<%= blog.id %>?_method=put" method="post">
                 <button>edit</button>
-            </form>
-            <form action="/blogview/<%= blog.id %>?_method=delete" method="post">
-                <button>delete</button>
+            </form> -->
+            <form action="/blogview/<%= blog.id %>/?_method=delete" method="post">
+                <button>edit</button>
             </form>
         </div>
         <% } %>
