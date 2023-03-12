@@ -13,9 +13,7 @@ var blog_schema = new mongoose.Schema({
     headerImg:{
         type:String
     },
-    contentImg:[{
-        type:String
-    }]
+    contentImg:[String]
 });
 const blogModel = mongoose.model('ebo_blog',blog_schema)
 module.exports = blogModel;

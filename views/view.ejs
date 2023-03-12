@@ -11,10 +11,18 @@
             <h1><%=blog.blogTitle %></h1>
             <p><%= blog.blog%></p>
             <p>posted by:<%=blog.blogPostedBy %></p>
-            <p>header img src:<%= blog.headreImg%> </p>
-            <% for( let blog of blogs ){ %>
-            <p></p>
+            <p>header img src:<%= blog.headerImg%> </p>
+            <% for( let url of blog.contentImg ){ %>
+            <p><%=  url %></p>
+            <% } %>
+            <form action="/blogview/<%= blog.id %>?_method=put" method="post">
+                <button>edit</button>
+            </form>
+            <form action="/blogview/<%= blog.id %>?_method=delete" method="post">
+                <button>delete</button>
+            </form>
         </div>
+        <% } %>
     
 </body>
 </html>
