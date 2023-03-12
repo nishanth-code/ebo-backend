@@ -1,11 +1,14 @@
 const express = require('express')
 const app = express();
+const path = require('path')
 const ejsMate = require('ejs-mate')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const blog = require('./models/blogsmodel')
 const connectDB = require('./config/db')
-const PORT = process.env.PORT;
+app.set('views',path.join(__dirname,'./views'))
+const PORT =4000 ;
+// process.env.PORT;
 
 
 connectDB();
@@ -16,20 +19,29 @@ app.set('view engine','ejs')
 app.engine('ejs',ejsMate)
 
 app.get('/',(req,res)=>{
-    res.render('./views/form')
+    blog.findByIdAndDelete({_id: '640cab6833c41f9faf323a0c'})
+    res.render('form')
 })
 
 app.post('/blog',async(req,res)=>{
-    const newBlog = new blog(req.body.blog)
-    await newBlog.save()
+  
+    const newBlog = new blog(req.body)
+    
+   const c= await newBlog.save()
+    console.log(c)
     res.redirect('/blogView')
 
 })
 app.get('/blogView',async(req,res)=>{
-    const blogs = blog.find({})
-    res.send(blogs)
+    const blogs =await blog.find()
+    console.log(blogs)
+    res.json(blogs)
+})
+app.put('/blogview/:id',async(req,res)=>{
+    
 })
 
 app.listen(PORT, () =>
-  console.log(`Server started on port ${PORT}`.yellow.underline)
+  console.log(`Server started on port ${PORT}`)
 );
+//.yellow.underline

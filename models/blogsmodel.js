@@ -1,23 +1,22 @@
 const mongoose = require('mongoose')
 var blog_schema = new mongoose.Schema({
     blogTitle:{
-        type:string
+        type:String
     },
-    blog:
-    {
+    blog:{
         type:String
     },
     blogPostedBy:{
         type:String
     },
-    date:{
-        type:Date,
-        default:Date.now
+    
+    header_img:{
+        type:String
     },
-    img_src:{
+    content_img:{
         type:String
     }
 });
-const blogModel = mongoose('blog',blog_schema)
+const blogModel = mongoose.model('ebo_blog',blog_schema)
 module.exports = blogModel;
 console.log('blog schema created')
