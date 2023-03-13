@@ -8,7 +8,7 @@
 <body>
     <% for( let blog of blogs ){ %>
         <div>
-            <form action="delete/<%= blog.id %>" method="post">
+            <form action="delete/<%= blog.id %>?_method=delete" method="post">
             <h1><%=blog.blogTitle %></h1>
             <p><%= blog.blog%></p>
             <p>posted by:<%=blog.blogPostedBy %></p>
