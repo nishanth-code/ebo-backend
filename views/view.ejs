@@ -8,6 +8,7 @@
 <body>
     <% for( let blog of blogs ){ %>
         <div>
+            <form action="/blogview/delete/<%= blog.id %>" method="post">
             <h1><%=blog.blogTitle %></h1>
             <p><%= blog.blog%></p>
             <p>posted by:<%=blog.blogPostedBy %></p>
@@ -15,11 +16,9 @@
             <% for( let url of blog.contentImg ){ %>
             <p><%=  url %></p>
             <% } %>
-            <!-- <form action="/blogview/<%= blog.id %>?_method=put" method="post">
-                <button>edit</button>
-            </form> -->
-            <form action="/blogview/<%= blog.id %>/?_method=delete" method="post">
-                <button>edit</button>
+            <a href="/blogview/<%= blog.id %>">edit</a>
+           
+                <button>delete</button>
             </form>
         </div>
         <% } %>

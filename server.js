@@ -7,9 +7,8 @@ const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const blog = require('./models/blogsmodel')
 const connectDB = require('./config/db');
-const { findById, findByIdAndDelete } = require('./models/blogsmodel');
 app.set('views',path.join(__dirname,'./views'))
-const PORT =4000 ;
+const PORT =5000 ;
 // process.env.PORT;
 
 
@@ -39,17 +38,23 @@ app.get('/blogView',async(req,res)=>{
     // console.log(blogs)
     // res.json(blogs)
 })
+app.get('/blogview/:id', async(req,res)=>{
+    const b = await blog.findById(req.params.id) 
+    res.render('edit',{b})
+})
 app.put('/blogview/:id',async(req,res)=>{
-    const bloge = await blog.findById(req.params.id)
-    console.log(bloge)
+    const cblog = {...req.body}
+    console.log(cblog)
+    const bloge = await blog.findByIdAndUpdate(req.params.id,{...req.body},{returnDocument:'after'})
+    res.redirect('/blogView')
     
 })
 
-app.delete('/blogview/:id'), async(req,res) =>{
+app.post('/blogview/delete/:id', async(req,res) =>{
     console.log('delete route')
     await blog.findByIdAndDelete(req.params.id)
     res.redirect('/blogview')
-}
+})
 
 app.listen(PORT, () =>
   console.log(`Server started on port ${PORT}`)
